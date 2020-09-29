@@ -1,0 +1,31 @@
+criar 3 tabelas
+
+------------------------
+uma tabela de usuarios	|
+nome			|
+senha 			|
+email 			|
+telefone		|
+cep:			|
+rua:                    |
+numero:                 |
+bairro:                 |
+complementos:           |
+residência:             |
+------------------------|
+
+------------------|
+tabela de produto |
+		  |
+produtoid:	  |
+nomeproduto:	  |
+preco:		  |
+preco-desconto:	  |
+descricao:	  |
+avaliacao:	  |
+------------------|
+----------------- |
+tabela favoritos  |
+usuarioid	  |
+produto:id 	  |
+------------------|
