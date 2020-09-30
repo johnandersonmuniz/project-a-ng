@@ -7,15 +7,15 @@ const Produtos = connection.define('produtos',{
         allowNull: false
     },
     descricao: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false
     },
     preco: {
-        type: Sequelize.FLOAT,
-        allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false    
     },
     precoDesconto: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
         allowNull: false
     },
     avaliacao: {

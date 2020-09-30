@@ -3,7 +3,7 @@ const connection = require("../../dataBases/dataBase")
 
 const Users = connection.define("users", {
     nome: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false
     },
     email: {
@@ -35,7 +35,7 @@ const Users = connection.define("users", {
         allowNull: false
     },
     residenciaTipo: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false
     }
     

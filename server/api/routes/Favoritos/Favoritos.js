@@ -7,7 +7,8 @@ const Favoritos = connection.define('favoritos',{
         allowNull: false
     },
     produtoId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 })
 

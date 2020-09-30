@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Deletar um produto</title>
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <hr>
+        <h3>Categorias</h3>
+        <br>
+        <a href="/admin/categories/new" class="btn btn-success">Configuração de produto</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Preço com desconto</th>
+                    <th>Avaliação</th>
+                </tr>
+            </thead>
+            <% produto.forEach(produtos => { %>
+            <tbody>
+                <tr>
+                    <th><%= produtos.nomeProduto %></th>
+                    <th><%= produtos.descricao %></th>
+                    <th><%= produtos.preco %></th>
+                    <th><%= produtos.precoDesconto %></th>
+                    <th><%= produtos.avaliacao %></th>
+                    <th>
+                        <button class="btn btn-warning btn-sm">Editar</button>
+                        <form action="/categories/delete" method="POST" style="display: inline;" 
+                            onsubmit="confimarDelecao(event, this)">
+                            <input type="hidden" value="<%= produtos.id %>" name="id">
+                            <button class="btn btn-danger btn-sm" >Deletar</button>
+                        </form>
+                    </th>
+                </tr>
+            </tbody>
+            <% }) %>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src=".././api/js/bootstrap.min.js"></script>
+
+</html>
+<script>
+    function confimarDelecao(event, form) {
+        event.preventDefault();
+        var decision = confirm("Tem certeza que quer deletar")
+        if(decision) {
+            form.submit();
+        }
+    } 
+</script>
