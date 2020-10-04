@@ -19,7 +19,7 @@ const Produtos = connection.define('produtos',{
         allowNull: false
     },
     avaliacao: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: true
     }
 })

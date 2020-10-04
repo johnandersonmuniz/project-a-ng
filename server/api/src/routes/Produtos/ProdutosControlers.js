@@ -3,7 +3,14 @@ const routers = express.Router()
 const Produtos = require("./Produtos");
 
 
-//Criar um produto
+//MOSTRAR TODOS OS PRODUTOS
+routers.get("/produtos", (req, res) => {
+    Produtos.findAll().then(find => {
+        return res.sendStatus(200).json(find)
+    })
+})
+
+//CRIAR UM PRODUTO
 routers.post("/produto", (req, res) => {
     var { nomeProduto,
          descricao, 
@@ -15,17 +22,17 @@ routers.post("/produto", (req, res) => {
         descricao,
         preco,
         precoDesconto
-    }).then(() => {})
-})
-
-//mostrar todos os produtos
-routers.get("/produtos", (req, res) => {
-    Produtos.findAll().then(find => {
-        res.json(find)
+    }).then(() => {
+        return res.sendStatus(200)
+    }).catch(() => {
+        return res.sendStatus(400)
     })
+
+    
 })
 
-//mostrar apenas um produto
+
+//MOSTRAR APENAS UM PRODUTO
 routers.get("/produto/:id", (req, res) => {
     var  id  = req.params.id
     if (isNaN(id)) {
@@ -38,22 +45,24 @@ routers.get("/produto/:id", (req, res) => {
         }
     }).then(find => {
         if (find != undefined) {
-            res.json(find)
+            return res.sendStatus(200).json(find)
         } else {
-            res.send("Error")
+           return res.sendStatus(400).send("Error")
         }
     })
 })
 
 //DELETAR UM PRODUTO
-routers.delete("produto/:id", (req, res) => {
-    
+routers.delete("/produto/:id", (req, res) => {
+    var { id } = req.params
+    if (isNaN(id)) {
+        return res.sendStatus(400).send(400)
+    }
+
     Produtos.destroy({
-        where: {id: req.params.id}
+        where: {id: id}
     })
     return res.sendStatus(200)
-
-    
 })
 
 //
